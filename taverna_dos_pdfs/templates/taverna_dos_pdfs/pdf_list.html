@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pdf List</title>
+</head>
+<body>
+
+    <ul>
+        {% for pdf in pdfs %}
+            <li>
+                <p>{{ pdf.title }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
