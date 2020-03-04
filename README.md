@@ -20,14 +20,15 @@ Siga o passo a passo:
     CREATE DATABASE 'db_casadohomebrew'@'localhost';
     ```
 
-- No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, inserir credenciais do banco de dados em:
+-   No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, inserir credenciais do banco de dados em:
    
     ```
     'USER': 'django',
     'PASSWORD': 'django',
     ``` 
 
--    Execute os comandos no terminal:
+
+-   Execute os comandos no terminal:
     
     ```
     pip install pipenv
