@@ -5,13 +5,27 @@
     <title>Pdf List</title>
 </head>
 <body>
-
+    <h1>PDF LIST</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pdf in pdfs %}
+                <tr>
+                    <td>{{ pdf.title }}</td>
+                    <td>
+                        <a href="{{ pdf.pdf.url }}">Download PDF</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <ul>
-        {% for pdf in pdfs %}
-            <li>
-                <p>{{ pdf.title }}</p>
-            </li>
-        {% endfor %}
+
     </ul>
 
 </body>
