@@ -28,14 +28,23 @@ Siga o passo a passo:
     ``` 
 
 
--   Execute os comandos no terminal:
+-   Instale o ambiente virtual:
     
     ```
     pip install pipenv
     pipenv install
+    ```
+    
+> Se ocorrer erros ao instalar o mysqlclient, instale os pacotes abaixo e tente novamente:
+>
+>`sudo apt-get install default-libmysqlclient-dev build-essential`
+
+-   Prepare o banco de dados
+    ```
+    pipenv run python manage.py makemigrations
     pipenv run python manage.py migrate
     ```
-
+  
 ## Como rodar
 Execute o comando no terminal:
 ```
