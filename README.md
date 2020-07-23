@@ -17,7 +17,7 @@ Siga o passo a passo:
 
 -   Execute o comando no terminal do **MySQL**:
     ```
-    CREATE DATABASE 'db_casadohomebrew'@'localhost';
+    CREATE DATABASE db_casadohomebrew;
     ```
 
 -   No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, inserir credenciais do banco de dados em:
