@@ -46,7 +46,7 @@ def login_view(request):
             messages.error(request, 'Login incorreto ')
 
     else:
-        return render(request, 'taverna_dos_pdfs/login.html', {})
+        return render(request, 'registration/login.html', {})
 
 
 def register(request):
@@ -64,7 +64,7 @@ def register(request):
             return HttpResponseRedirect('/')
     else:
         form = RegistrationForm()
-    return render(request, 'taverna_dos_pdfs/register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 
 def logout_view(request):
