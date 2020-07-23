@@ -1,13 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Casa do Homebrew</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Casa do Homebrew</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <h1><a href="/">Casa do Homebrew</a></h1>
-    <h1><a href="/create">Enviar PDF</a></h1>
-    {% block content %}
-    {% endblock %}
+    <div class="navbar">
+        <h1><a href="/">Casa do Homebrew</a></h1>
+        <h1><a href="/create">Enviar PDF</a></h1>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
