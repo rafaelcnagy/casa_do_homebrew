@@ -9,6 +9,7 @@ O que você precisa fazer para rodar o projeto
 Ter instalado em seu computador:
 ```
 - Python 3.7
+- pip
 - MySQL
 ```
 
