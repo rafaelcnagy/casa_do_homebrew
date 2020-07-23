@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from taverna_dos_pdfs.forms import PdfForm
+from taverna_dos_pdfs.forms import PdfForm, RegistrationForm
 from taverna_dos_pdfs.models import PdfFile
 
 
@@ -13,7 +13,7 @@ def pdf_list(request):
     return render(request, 'taverna_dos_pdfs/pdf_list.html', {'pdfs': pdfs})
 
 
-@login_required(redirect_field_name='pdf_list')
+@login_required
 def create_pdf(request):
     if request.method == 'POST':
         form = PdfForm(request.POST, request.FILES)
@@ -49,7 +49,24 @@ def login_view(request):
         return render(request, 'taverna_dos_pdfs/login.html', {})
 
 
+def register(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+    else:
+        form = RegistrationForm()
+    return render(request, 'taverna_dos_pdfs/register.html', {'form': form})
+
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
-
