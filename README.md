@@ -9,6 +9,7 @@ O que você precisa fazer para rodar o projeto
 Ter instalado em seu computador:
 ```
 - Python 3.7
+- pip
 - MySQL
 ```
 
@@ -17,7 +18,7 @@ Siga o passo a passo:
 
 -   Execute o comando no terminal do **MySQL**:
     ```
-    CREATE DATABASE 'db_casadohomebrew'@'localhost';
+    CREATE DATABASE db_casadohomebrew;
     ```
 
 -   No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, inserir credenciais do banco de dados em:

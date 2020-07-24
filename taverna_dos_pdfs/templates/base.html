@@ -1,20 +1,27 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Casa do Homebrew</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Casa do Homebrew</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <h1><a href="/">Casa do Homebrew</a></h1>
-    <h2><a href="/create">Enviar PDF</a></h2>
-    {% if user.is_authenticated %}
-        <h3><a href="{% url 'logout' %}">logout</a></h3>
-    {% else %}
-        <h3><a href="{% url 'login' %}">login</a></h3>
-        <h3><a href="{% url 'register' %}">register</a></h3>
-    {% endif %}
+    <div class="navbar">
+        <h1><a href="/">Casa do Homebrew</a></h1>
+        <h1><a href="/create">Enviar PDF</a></h1>
 
-    {% block content %}
-    {% endblock %}
+        {% if user.is_authenticated %}
+        <h1><a href="{% url 'logout' %}">logout</a></h1>
+        {% else %}
+        <h1><a href="{% url 'login' %}">login</a></h1>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
