@@ -51,3 +51,14 @@ Execute o comando no terminal:
 ```
 pipenv run python manage.py runserver 
 ```
+
+---
+
+## TO DO LIST
+
+- [x] Enviar arquivos
+- [ ] Limitações ao enviar arquivo
+- [x] Login
+- [ ] Vincular arquivo com usuário
+- [ ] CRUD arquivos
+- [ ] Votos
