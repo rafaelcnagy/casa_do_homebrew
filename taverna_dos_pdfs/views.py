@@ -1,10 +1,8 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from taverna_dos_pdfs.forms import PdfForm, RegistrationForm
+from taverna_dos_pdfs.forms import PdfForm
 from taverna_dos_pdfs.models import PdfFile
 
 
@@ -15,6 +13,7 @@ def pdf_list(request):
 
 @login_required
 def create_pdf(request):
+    print("DEBUG ", request.method)
     if request.method == 'POST':
         form = PdfForm(request.POST, request.FILES)
         if form.is_valid():
@@ -29,21 +28,3 @@ def handle_uploaded_file(file):
     with open(f'data/pdfs/test.pdf', 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
-
-
-def register(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('/')
-
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return HttpResponseRedirect('/')
-    else:
-        form = RegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})

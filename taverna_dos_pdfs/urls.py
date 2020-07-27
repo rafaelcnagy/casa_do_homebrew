@@ -7,7 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.pdf_list, name='pdf_list'),
     path('create', views.create_pdf, name='create_pdf'),
-    path('register', views.register, name='register'),
 ]
 
 if settings.DEBUG:

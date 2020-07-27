@@ -126,15 +126,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "casa_do_homebrew/static"),
-    # '/var/www/static/',
+    os.path.join(BASE_DIR, "static"),
 )
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(LOGS_DIR, 'media')
 MEDIA_URL = '/media/'
 
+LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+EMAIL_FILE_PATH = os.path.join(LOGS_DIR, "sent_emails")
