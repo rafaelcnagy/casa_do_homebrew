@@ -8,8 +8,8 @@ O que você precisa fazer para rodar o projeto
 ## Pré Requisitos
 Ter instalado em seu computador:
 ```
-- Python 3.7
-- pip
+- Python 3.8
+- poetry
 - MySQL
 ```
 
@@ -32,8 +32,7 @@ Siga o passo a passo:
 -   Instale o ambiente virtual:
     
     ```
-    pip install pipenv
-    pipenv install
+    poetry install
     ```
     
 > Se ocorrer erros ao instalar o mysqlclient, instale os pacotes abaixo e tente novamente:
@@ -42,14 +41,14 @@ Siga o passo a passo:
 
 -   Prepare o banco de dados
     ```
-    pipenv run python manage.py makemigrations
-    pipenv run python manage.py migrate
+    poetry run python manage.py makemigrations
+    poetry run python manage.py migrate
     ```
   
 ## Como rodar
 Execute o comando no terminal:
 ```
-pipenv run python manage.py runserver 
+poetry run python manage.py runserver 
 ```
 
 ---
