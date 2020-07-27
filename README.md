@@ -57,8 +57,9 @@ pipenv run python manage.py runserver
 ## TO DO LIST
 
 - [x] Enviar arquivos
-- [ ] Limitações ao enviar arquivo
 - [x] Login
-- [ ] Vincular arquivo com usuário
+- [ ] Limitações ao enviar arquivo
+- [ ] Update arquivo-user
 - [ ] CRUD arquivos
 - [ ] Votos
+- [ ] CustomUser
