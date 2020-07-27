@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Login</h1>
+
+{% if form.errors %}
+<p>O usuário e senha não estão corretos. Por favor, tente novamente.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Sua conta não tem acesso a essa página. Para proceder, faça login em uma conta com acesso.</p>
+    {% else %}
+    <p>Faça login para ver essa página.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+<tr>
+    <td><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></td>
+<tr>
+</table>
+
+<input type="submit" value="Entrar">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+
+<p>Ainda não tem conta? <a href="{% url 'register' %}">Registre-se</a></p>
+
+{% endblock %}
