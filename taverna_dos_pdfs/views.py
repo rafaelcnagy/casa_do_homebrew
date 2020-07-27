@@ -13,7 +13,6 @@ def pdf_list(request):
 
 @login_required
 def create_pdf(request):
-    print("DEBUG ", request.method)
     if request.method == 'POST':
         form = PdfForm(request.POST, request.FILES)
         if form.is_valid():
