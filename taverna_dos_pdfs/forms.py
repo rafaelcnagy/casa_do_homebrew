@@ -10,6 +10,13 @@ class PdfForm(forms.ModelForm):
         model = PdfFile
         fields = ('title', 'description', 'pdf')
 
+    def save(self, commit=True):
+        pdf = super(PdfForm, self).save(commit=False)
+        pdf.author = self.author
+        if commit:
+            pdf.save()
+        return pdf
+
 
 class RegistrationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, label='Nome')

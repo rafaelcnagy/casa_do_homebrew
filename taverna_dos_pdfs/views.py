@@ -15,6 +15,7 @@ def pdf_list(request):
 def create_pdf(request):
     if request.method == 'POST':
         form = PdfForm(request.POST, request.FILES)
+        form.author = request.user
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')

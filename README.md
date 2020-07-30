@@ -57,8 +57,8 @@ poetry run python manage.py runserver
 
 - [x] Enviar arquivos
 - [x] Login
-- [ ] Limitações ao enviar arquivo
-- [ ] Update arquivo-user
+- [x] Limitações ao enviar arquivo
+- [x] Update arquivo-user
 - [ ] CRUD arquivos
 - [ ] Votos
 - [ ] CustomUser
