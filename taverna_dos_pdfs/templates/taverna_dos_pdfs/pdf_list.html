@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>PDF LIST</h1>
+<h1 id="title">PDF LIST</h1>
 <table>
     <thead>
         <tr>
             <th>Título</th>
+            <th>Autor</th>
             <th>Download</th>
         </tr>
     </thead>
@@ -13,6 +14,7 @@
         {% for pdf in pdfs %}
             <tr>
                 <td>{{ pdf.title }}</td>
+                <td>{{ pdf.author }}</td>
                 <td>
                     <a href="{{ pdf.pdf.url }}">Download PDF</a>
                 </td>
