@@ -21,13 +21,22 @@ Siga o passo a passo:
     CREATE DATABASE db_casadohomebrew;
     ```
 
--   No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, inserir credenciais do banco de dados em:
+-   Ainda no terminal do **MySQL**, crie o usuário que poderá fazer modificações no banco de dados:
+    ```
+    CREATE USER 'django'@'localhost' IDENTIFIED BY 'django';
+
+>   Caso seja necessário, forneça privilégios para este usuário por meio do comando:
+>
+>   `GRANT ALL PRIVILEGES ON db_casadohomebrew.* TO 'django'@'localhost';`
+>
+>   (*Não* recomendado fora do ambiente de testes)
+
+-   No arquivo ```/casa_do_homebrew/settings.py```, próximo da linha 85, insira as credenciais do usuário criado em:
    
     ```
     'USER': 'django',
     'PASSWORD': 'django',
     ``` 
-
 
 -   Instale o ambiente virtual:
     
