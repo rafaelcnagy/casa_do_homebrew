@@ -1,14 +1,31 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DetailView, DeleteView
 
 from taverna_dos_pdfs.forms import PdfForm
 from taverna_dos_pdfs.models import PdfFile
 
 
-def pdf_list(request):
-    pdfs = PdfFile.objects.filter(deleted_at__isnull=True).order_by('votes')
-    return render(request, 'taverna_dos_pdfs/pdf_list.html', {'pdfs': pdfs})
+class PdfList(ListView):
+    model = PdfFile
+
+
+class PdfDetail(DetailView):
+    model = PdfFile
+    fields = ('title', 'description', 'pdf')
+
+
+class PdfUpdate(UpdateView):
+    model = PdfFile
+    fields = ('title', 'description', 'pdf')
+
+
+
+class PdfDelete(DeleteView):
+    model = PdfFile
+    success_url = reverse_lazy('pdf_list')
 
 
 @login_required
@@ -23,8 +40,3 @@ def create_pdf(request):
         form = PdfForm()
     return render(request, 'taverna_dos_pdfs/create_pdf.html', {'form': form})
 
-
-def handle_uploaded_file(file):
-    with open(f'data/pdfs/test.pdf', 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)

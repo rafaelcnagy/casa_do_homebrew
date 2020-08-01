@@ -11,9 +11,9 @@
         </tr>
     </thead>
     <tbody>
-        {% for pdf in pdfs %}
+        {% for pdf in object_list %}
             <tr>
-                <td>{{ pdf.title }}</td>
+                <td><a href="{% url 'pdf_view' pk=pdf.id %}">{{ pdf.title }}</a></td>
                 <td>{{ pdf.author }}</td>
                 <td>
                     <a href="{{ pdf.pdf.url }}">Download PDF</a>
