@@ -21,4 +21,4 @@ def register(request):
             return HttpResponseRedirect('/')
     else:
         form = RegistrationForm()
-    return render(request, 'registration/register_form.html', {'form': form})
+    return render(request, 'cartorio_de_registros/register_form.html', {'form': form})
