@@ -38,5 +38,5 @@ def create_pdf(request):
             return HttpResponseRedirect('/')
     else:
         form = PdfForm()
-    return render(request, 'taverna_dos_pdfs/create_pdf.html', {'form': form})
+    return render(request, 'taverna_dos_pdfs/pdf_create.html', {'form': form})
 
