@@ -1,3 +1,5 @@
-Pipfile.lock
+poetry.lock
 .idea
 __pycache__/
+logs/
+*/migrations/
