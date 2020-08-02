@@ -47,6 +47,11 @@ class PdfDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
             messages.add_message(request, messages.WARNING, "Você pode deletar apenas seus próprios arquivos")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.soft_delete()
+        return HttpResponseRedirect(self.get_success_url())
+
 
 @login_required
 def create_pdf(request):
