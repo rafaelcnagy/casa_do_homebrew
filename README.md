@@ -71,3 +71,7 @@ poetry run python manage.py runserver
 - [x] CRUD arquivos
 - [ ] Votos
 - [ ] CustomUser
+- [ ] Pdf thumbnail
+- [ ] Página de perfil
+- [ ] Página da conta
+- [ ] Change password
