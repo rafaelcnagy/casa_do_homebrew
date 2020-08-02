@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cartorio_de_registros',
     'taverna_dos_pdfs',
+    'vote',
 ]
 
 MIDDLEWARE = [

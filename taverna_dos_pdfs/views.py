@@ -13,6 +13,7 @@ from taverna_dos_pdfs.models import PdfFile
 
 class PdfList(ListView):
     model = PdfFile
+    queryset = PdfFile.objects.filter(deleted_at__isnull=True).order_by('created_at').order_by('-vote_score')
 
 
 class PdfDetail(DetailView):
@@ -59,3 +60,16 @@ def create_pdf(request):
         form = PdfForm()
     return render(request, 'taverna_dos_pdfs/pdf_create.html', {'form': form})
 
+
+@login_required
+def up_vote(request, pk):
+    pdf = PdfFile.objects.get(pk=pk)
+    pdf.votes.up(request.user.id)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def down_vote(request, pk):
+    pdf = PdfFile.objects.get(pk=pk)
+    pdf.votes.down(request.user.id)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -8,6 +8,7 @@ authors = ["rafaelcnagy <rafaelcnagy@hotmail.com>"]
 python = "^3.8"
 django = "^3.0.8"
 mysqlclient = "^2.0.1"
+django-vote = "^2.2.0"
 
 [tool.poetry.dev-dependencies]
 
