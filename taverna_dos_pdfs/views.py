@@ -66,15 +66,19 @@ def create_pdf(request):
     return render(request, 'taverna_dos_pdfs/pdf_create.html', {'form': form})
 
 
-@login_required
 def up_vote(request, pk):
-    pdf = PdfFile.objects.get(pk=pk)
-    pdf.votes.up(request.user.id)
+    if request.user.is_authenticated:
+        pdf = PdfFile.objects.get(pk=pk)
+        pdf.votes.up(request.user.id)
+    else:
+        messages.add_message(request, messages.WARNING, 'Para votar, você precisa estar logado')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-@login_required
 def down_vote(request, pk):
-    pdf = PdfFile.objects.get(pk=pk)
-    pdf.votes.down(request.user.id)
+    if request.user.is_authenticated:
+        pdf = PdfFile.objects.get(pk=pk)
+        pdf.votes.down(request.user.id)
+    else:
+        messages.warning(request, 'Para votar, você precisa estar logado')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
