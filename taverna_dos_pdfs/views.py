@@ -53,8 +53,8 @@ def create_pdf(request):
         form = PdfForm(request.POST, request.FILES)
         form.author = request.user
         if form.is_valid():
-            form.save()
-            return redirect('/')
+            pdf = form.save()
+            return redirect(reverse_lazy('pdf_view', kwargs={'pk': pdf.pk}))
     else:
         form = PdfForm()
     return render(request, 'taverna_dos_pdfs/pdf_create.html', {'form': form})
