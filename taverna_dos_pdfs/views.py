@@ -31,6 +31,9 @@ class PdfUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
             messages.add_message(request, messages.WARNING, "Você pode editar apenas seus próprios arquivos")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+    def get_success_url(self):
+        return reverse_lazy('pdf_view', kwargs={'pk': self.kwargs['pk']})
+
 
 class PdfDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = PdfFile
@@ -38,7 +41,7 @@ class PdfDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
 
     def get(self, request, **kwargs):
         if self.get_object().author == self.request.user:
-            return UpdateView.get(self, request, **kwargs)
+            return DeleteView.get(self, request, **kwargs)
         else:
             messages.add_message(request, messages.WARNING, "Você pode deletar apenas seus próprios arquivos")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
