@@ -13,7 +13,7 @@ from taverna_dos_pdfs.models import PdfFile
 
 class PdfList(ListView):
     model = PdfFile
-    queryset = PdfFile.objects.filter(deleted_at__isnull=True).order_by('created_at').order_by('-vote_score')
+    queryset = PdfFile.objects.filter(deleted_at__isnull=True).order_by('-vote_score', '-created_at')
 
 
 class PdfDetail(DetailView):
