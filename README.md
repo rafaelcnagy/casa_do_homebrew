@@ -68,6 +68,10 @@ poetry run python manage.py runserver
 - [x] Login
 - [x] Limitações ao enviar arquivo
 - [x] Update arquivo-user
-- [ ] CRUD arquivos
+- [x] CRUD arquivos
 - [ ] Votos
 - [ ] CustomUser
+- [ ] Pdf thumbnail
+- [ ] Página de perfil
+- [ ] Página da conta
+- [ ] Change password

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ object }}</h1>
+
+    {% if user.is_authenticated and user == object.author %}
+    <p><a href="{% url 'pdf_update' pk=object.id %}">Editar</a></p>
+    <p><a href="{% url 'pdf_delete' pk=object.id %}">Deletar</a></p>
+    {% endif %}
+
+    <p>{{ object.description }}</p>
+    <p><a href="{{ object.pdf.url }}">Download</a></p>
+    <p>Autor: {{ object.author }}</p>
+    <p>Data de publicação: {{ object.created_at.date }}</p>
+
+{% endblock %}

@@ -17,3 +17,6 @@ class PdfFile(models.Model):
     def __str__(self):
         return self.title
 
+    def soft_delete(self):
+        self.deleted_at = timezone.now()
+        self.save()
