@@ -69,9 +69,11 @@ poetry run python manage.py runserver
 - [x] Limitações ao enviar arquivo
 - [x] Update arquivo-user
 - [x] CRUD arquivos
-- [ ] Votos
+- [x] Votos
 - [ ] CustomUser
 - [ ] Pdf thumbnail
 - [ ] Página de perfil
 - [ ] Página da conta
 - [ ] Change password
+- [ ] Tags
+- [ ] Busca/filtros

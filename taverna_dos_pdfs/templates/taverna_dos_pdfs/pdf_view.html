@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ object }}</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1>
+        <a href="{% url 'pdf_upvote' pk=object.id %}">↑</a>
+        {{ object.votes.count }}
+        <a href="{% url 'pdf_downvote' pk=object.id %}">↓</a>
+        {{ object }}
+    </h1>
 
     {% if user.is_authenticated and user == object.author %}
     <p><a href="{% url 'pdf_update' pk=object.id %}">Editar</a></p>

@@ -2,9 +2,19 @@
 
 {% block content %}
 <h1 id="title">PDF LIST</h1>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <table>
     <thead>
         <tr>
+            <th>Votes</th>
             <th>Título</th>
             <th>Autor</th>
             <th>Download</th>
@@ -13,6 +23,11 @@
     <tbody>
         {% for pdf in object_list %}
             <tr>
+                <td>
+                    <a href="{% url 'pdf_upvote' pk=pdf.id %}">↑</a>
+                    {{ pdf.votes.count }}
+                    <a href="{% url 'pdf_downvote' pk=pdf.id %}">↓</a>
+                </td>
                 <td><a href="{% url 'pdf_view' pk=pdf.id %}">{{ pdf.title }}</a></td>
                 <td>{{ pdf.author }}</td>
                 <td>
